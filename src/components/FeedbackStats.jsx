@@ -12,7 +12,7 @@ const FeedbackStats = ({feedback}) => {
 
   return (
     <div className="feedback-stats">
-        <h4>{length}</h4>
+        <h4>{length} {length === 1 ? 'Review' : 'Reviews'}</h4>
         <h4>Average Rating: {isNaN(average) ? 0 : average}</h4>
     </div>
   )
