@@ -19,7 +19,13 @@ const FeedbackStats = ({feedback}) => {
 }
 
 FeedbackStats.propTypes = {
-    feedback: PropTypes.array.isRequired
+  feedback: PropTypes.arrayOf(
+    PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+    })
+)
 }
 
 export default FeedbackStats
