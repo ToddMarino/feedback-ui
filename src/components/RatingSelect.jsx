@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
-function RatingSelect({select}) {
+function RatingSelect({ select }) {
 	const [selected, setSelected] = useState(10)
+
+	const { feedbackEdit } = useContext(FeedbackContext)
+
+	useEffect(() => {
+		setSelected(feedbackEdit.item.rating)
+	}, [feedbackEdit])
 
 	const handleChange = (e) => {
 		setSelected(+e.currentTarget.value)
-        select(+e.currentTarget.value)
+		select(+e.currentTarget.value)
 	}
 
 	return (
@@ -61,7 +68,7 @@ function RatingSelect({select}) {
 					id='num5'
 					value='5'
 					onChange={handleChange}
-					checked={selected === 1}
+					checked={selected === 5}
 				/>
 				<label htmlFor='num5'>5</label>
 			</li>
@@ -72,7 +79,7 @@ function RatingSelect({select}) {
 					id='num6'
 					value='6'
 					onChange={handleChange}
-					checked={selected ===6}
+					checked={selected === 6}
 				/>
 				<label htmlFor='num6'>6</label>
 			</li>
